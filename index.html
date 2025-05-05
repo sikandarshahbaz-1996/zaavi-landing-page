@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaavi AI Voice Agent Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom CSS for animations and hover effects (beyond Tailwind's) */
+      .pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.05);
+        }
+      }
+      .slide-in-left {
+        animation: slide-in-left 0.5s ease-out;
+      }
+      @keyframes slide-in-left {
+        0% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      .slide-in-right {
+        animation: slide-in-right 0.5s ease-out;
+      }
+      @keyframes slide-in-right {
+        0% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      .fade-in {
+        animation: fade-in 0.5s ease-out;
+      }
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .zoom-in {
+        animation: zoom-in 0.3s ease-out;
+      }
+      @keyframes zoom-in {
+        0% {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .required-label::after {
+        content: " *";
+        color: red;
+      }
+      #zaavi-logo {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+      #zaavi-logo:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(120, 40, 140, 0.7);
+      }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans antialiased">
+    <div class="container mx-auto px-4 py-10 flex flex-col items-center justify-center min-h-screen">
+        <div class="text-center mb-8 space-y-4 slide-in-down">
+            <a href="http://www.zaavi.ca" target="_blank" rel="noopener noreferrer">
+                <img id="zaavi-logo" src="https://framerusercontent.com/images/EPswoPFtT6x6xtc6vOvzhpaywc.png" alt="Zaavi Logo" class="mx-auto h-20 w-auto rounded-lg shadow-lg">
+            </a>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 pulse">
+                Get Your Free AI Voice Agent Demo
+            </h1>
+            <p id="description" class="text-lg text-gray-300 max-w-2xl mx-auto fade-in">
+                Unlock the power of AI for your business.  Provide your details and we'll create a personalized demo, showcasing how a Zaavi Voice Agent can revolutionize your customer interactions.
+            </p>
+        </div>
+
+        <div id="demo-request-form-container" class="w-full max-w-md bg-gray-800 rounded-xl shadow-2xl p-6 space-y-6 slide-in-left">
+            <form id="demo-request-form" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-200 required-label">Name</label>
+                    <input type="text" id="name" name="name" required class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-200 required-label">Email</label>
+                    <input type="email" id="email" name="email" required class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-200 required-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label for="website" class="block text-sm font-medium text-gray-200 required-label">Website URL</label>
+                    <input type="text" id="website" name="website" required class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label for="additional_info" class="block text-sm font-medium text-gray-200">Anything else we should know?</label>
+                    <textarea id="additional_info" name="additional_info" rows="4" class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-3 px-6 rounded-md hover:from-purple-600 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-300 ease-in-out shadow-lg hover:shadow-xl zoom-in">
+                    Get Your Free Demo
+                </button>
+            </form>
+        </div>
+
+        <div id="thank-you" class="w-full max-w-md bg-gray-800 rounded-xl shadow-2xl p-6 space-y-6 text-center hidden fade-in">
+            <h2 class="text-2xl font-semibold text-green-400">Thank you!</h2>
+            <p class="text-gray-300">
+                We'll get started on your AI Voice Agent demo right away, the result will be sent to you as soon as it is done.<br/>
+                In the meantime, feel free to schedule your complimatery consultation with us.
+            </p>
+            <a target="_blank" href="https://calendly.com/zaavi-info/30min?month=2025-05" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out">
+                Schedule a Meeting
+            </a>
+        </div>
+        <p class="mt-8 text-gray-400 text-center">
+            <a href="http://www.zaavi.ca" target="_blank" rel="noopener noreferrer" class="hover:text-purple-300 transition duration-300">
+                www.zaavi.ca
+            </a>
+        </p>
+    </div>
+
+    <script>
+        const description = document.getElementById('description');
+        const formContainer = document.getElementById('demo-request-form-container');
+        const form = document.getElementById('demo-request-form');
+        const thankYouSection = document.getElementById('thank-you');
+        const webhookUrl = 'https://hook.us2.make.com/aabpvo3msdwdqrdh3p9558opnsk324d9';
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Basic form validation
+            let hasErrors = false;
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+
+
+            if (!nameInput.value.trim()) {
+                alert('Please enter your name.');
+                hasErrors = true;
+                nameInput.focus();
+            } else if (!emailInput.value.trim()) {
+                alert('Please enter your email address.');
+                hasErrors = true;
+                emailInput.focus();
+            }
+
+            if (hasErrors) {
+                return; // Stop form submission if there are errors
+            }
+
+
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Send data to Make.com webhook
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(responseData => {
+                console.log('Webhook response:', responseData);
+                // Optionally, handle the webhook response here (e.g., show a success message)
+            })
+            .catch(error => {
+                console.error('Error sending data to webhook:', error);
+                alert('Failed to submit your request. Please try again.'); // Improved user feedback
+            });
+
+            // Hide the form and show the thank you section
+            description.classList.add('hidden');
+            formContainer.classList.add('hidden');
+            thankYouSection.classList.remove('hidden');
+            thankYouSection.classList.add('fade-in');
+
+
+        });
+    </script>
+</body>
+</html>
